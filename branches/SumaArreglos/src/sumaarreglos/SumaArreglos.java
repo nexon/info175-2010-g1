@@ -17,8 +17,14 @@ public class SumaArreglos {
         double valor = 0.0;
         return valor;
     }
-    public void sumaUnoAUno(SumaArreglos obj) {
-        
+    public double sumaUnoAUno(SumaArreglos obj) {
+        double valor = 0.0;
+        return valor;
     }
+    public double sumaDos(SumaArreglos obj) {
+        double valor = 0.0;
+        return valor;
+    }
+
     
 }
