@@ -72,20 +72,7 @@ public class SumaArreglos {
     }
     
     public double sumaDos(SumaArreglos obj) {
-        double valor = 0.0;
-        double[] menor;
-        double[] mayor;
-        if(this.valores.length>obj.getValores().length) {
-            menor = obj.getValores();
-            mayor = this.valores;
-        } else {
-            menor = this.valores;
-            mayor = obj.getValores();
-        }
-        for(int i=0;i<menor.length;i++) {
-            valor += menor[i]+mayor[i];
-        }
-        return valor;
+        return  obj.sumaValores()+this.sumaValores();
     }
 
     public double[] getValores() {

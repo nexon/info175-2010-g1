@@ -22,7 +22,7 @@ public class Main {
         SumaArreglos test = new SumaArreglos(aux);
         SumaArreglos test1 = new SumaArreglos(aux2);
 
-        System.out.println("ARREGLO 1: ");
+       /* System.out.println("ARREGLO 1: ");
         test.imprimir();
         System.out.println("ARREGLO 2: ");
         test1.imprimir();
@@ -30,6 +30,13 @@ public class Main {
         test.sumaUnoAUno(test1);
         System.out.println("ARREGLO 1 MODIFICADO: ");
         test.imprimir();
+        * */
+        test1.sumaUnoAUno(test);
+        test1.imprimir();
+
+        //double v = test.sumaDos(test1);
+        //System.out.println("Metodo 2 modf: "+v);
+
 
     }
 
