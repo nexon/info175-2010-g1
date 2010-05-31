@@ -16,7 +16,7 @@ package pronosticator;
  * @author albertolagos
  */
 public class Pronosticator extends javax.swing.JPanel {
-    private listaDeCiudades ciudades;
+    private Ciudad ciudades;
     private URLConnectionReader conexion;
     private Configuracion conf;
     /** Creates new form Pronosticator */
