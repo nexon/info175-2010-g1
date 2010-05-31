@@ -5,6 +5,8 @@
 
 package pronosticator;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author albertolagos
