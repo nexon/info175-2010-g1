@@ -29,7 +29,7 @@ public class URLConnectionReader {
             System.out.println("=== Content ===");
             InputStream input = hpCon.getInputStream();
             int i = len;
-            while (((c = input.read()) != -1) && (—i > 0)) {
+            while (((c = input.read()) != -1) && (i > 0)) {
             System.out.print((char) c);
             }
             input.close();
@@ -41,4 +41,3 @@ public class URLConnectionReader {
 
 
 
-}
