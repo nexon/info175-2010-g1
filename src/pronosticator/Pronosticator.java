@@ -21,6 +21,7 @@ public class Pronosticator extends javax.swing.JPanel {
     private Configuracion conf;
     /** Creates new form Pronosticator */
     public Pronosticator() {
+        super();
         initComponents();
     }
 
@@ -34,15 +35,17 @@ public class Pronosticator extends javax.swing.JPanel {
     private void initComponents() {
 
         listaDeCiudades = new javax.swing.JComboBox();
-        jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
 
         setName("Form"); // NOI18N
 
         listaDeCiudades.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         listaDeCiudades.setName("listaDeCiudades"); // NOI18N
-
-        jSeparator1.setName("jSeparator1"); // NOI18N
+        listaDeCiudades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaDeCiudadesActionPerformed(evt);
+            }
+        });
 
         jSeparator2.setComponentOrientation(null);
         jSeparator2.setName("jSeparator2"); // NOI18N
@@ -52,28 +55,28 @@ public class Pronosticator extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(listaDeCiudades, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(156, 156, 156)
+                .add(264, 264, 264)
                 .add(jSeparator2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
-            .add(jSeparator1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                .addContainerGap(97, Short.MAX_VALUE))
+            .add(listaDeCiudades, 0, 361, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(57, 57, 57)
-                .add(jSeparator1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 27, Short.MAX_VALUE)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jSeparator2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(listaDeCiudades, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(229, Short.MAX_VALUE)
+                .add(listaDeCiudades, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jSeparator2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(89, 89, 89))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void listaDeCiudadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDeCiudadesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaDeCiudadesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JComboBox listaDeCiudades;
     // End of variables declaration//GEN-END:variables

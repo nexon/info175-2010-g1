@@ -12,31 +12,38 @@ import java.util.Date;
  * @author albertolagos
  */
 public class URLConnectionReader {
+    String direccion;
+    URLConnection conexion; //"http://www.meteochile.cl/js/pronostico_general.js"
 
-            public static void main(String args[]) throws Exception {
-            int c;
-            URL hp = new URL("http://www.meteochile.cl/js/pronostico_general.js");
-            URLConnection hpCon = hp.openConnection();
-            System.out.println("Date: " + new Date(hpCon.getDate()));
-            System.out.println("Content-Type: " +
-            hpCon.getContentType());
-            System.out.println("Expires: " + hpCon.getExpiration());
-            System.out.println("Last-Modified: " +
-            new Date(hpCon.getLastModified()));
-            int len = hpCon.getContentLength();
-            System.out.println("Content-Length: " + len);
-            if (len > 0) {
-            System.out.println("=== Content ===");
-            InputStream input = hpCon.getInputStream();
-            int i = len;
-            while (((c = input.read()) != -1) && (i > 0)) {
-            System.out.print((char) c);
-            }
-            input.close();
-            } else {
-            System.out.println("No Content Available");
-            }
-            }
+    public URLConnectionReader(String s) {
+        
+        try	{
+                URL weather = new URL(s);
+                this.conexion = weather.openConnection();
+        } catch(Exception e) {
+                System.out.println("Error al Conectar");
+        }
+   }
+
+    public String obtenerDatos() {
+         String ret = "";
+         try	{
+                BufferedReader in = new BufferedReader(
+                                    new InputStreamReader(
+                                    this.conexion.getInputStream()));
+                int i = 0;
+                String inputLine;
+                while ((inputLine = in.readLine()) != null) {
+                        ret += inputLine+' ';
+                        i++;
+                }
+                in.close();
+         } catch(Exception e) {
+           
+        }
+         return ret;
+    }
+
 }
 
 

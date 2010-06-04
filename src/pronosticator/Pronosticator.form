@@ -20,25 +20,21 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Component id="listaDeCiudades" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="264" max="-2" attributes="0"/>
               <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="164" max="32767" attributes="0"/>
+              <EmptySpace pref="97" max="32767" attributes="0"/>
           </Group>
-          <Component id="jSeparator1" alignment="0" pref="416" max="32767" attributes="0"/>
+          <Component id="listaDeCiudades" alignment="0" pref="361" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-              <Component id="jSeparator1" min="-2" pref="22" max="-2" attributes="0"/>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
-                  <Component id="listaDeCiudades" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace pref="229" max="32767" attributes="0"/>
+              <Component id="listaDeCiudades" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,11 +52,9 @@
         </Property>
         <Property name="name" type="java.lang.String" value="listaDeCiudades" noResource="true"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JSeparator" name="jSeparator1">
-      <Properties>
-        <Property name="name" type="java.lang.String" value="jSeparator1" noResource="true"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listaDeCiudadesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator2">
       <Properties>
