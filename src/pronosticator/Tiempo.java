@@ -41,4 +41,8 @@ public class Tiempo {
     public Double[] obtenerTemperaturaMin() {
         return tMin;
     }
+
+    public String[] obtenerIconos() {
+        return imagen;
+    }
 }
