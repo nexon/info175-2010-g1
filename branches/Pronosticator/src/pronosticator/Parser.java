@@ -5,6 +5,7 @@
 
 package pronosticator;
 
+import java.nio.charset.Charset;
 import java.util.Date;
 
 /**
@@ -49,7 +50,7 @@ public class Parser extends URLConnectionReader {
                     ciudad1[0] = ciudad1[0].substring(ciudad1[0].indexOf('|')+1).toString();
                     lista[i] = ciudad1[0].substring(0,ciudad1[0].indexOf('|'));
             } else {
-                    lista[i] = ciudad1[0];
+                    lista[i] =ciudad1[0];
             }
         }
         lista[16] = ciudad1[0].substring(ciudad1[0].lastIndexOf('|')+1);
@@ -122,11 +123,20 @@ public class Parser extends URLConnectionReader {
             }
             //String[] aa = getFecha()[i];
             Tiempo tmp = new Tiempo(getFecha()[i], tempMax, tempMin, getPronostico()[i], getImagen()[i]);
-            lista[i] = new Ciudad(c[i], tmp);
+            lista[i] = new Ciudad(changeChar(c[i]), tmp);
         }
 
         return lista;
     }
 
+    public static String changeChar(String s) {
+        return s.replace("&ntilde;","ñ")
+               .replace("&Ntilde;","Ñ")
+               .replace("&aacute;","á")
+               .replace("&eacute;","é")
+               .replace("&iacute;","í")
+               .replace("&oacute;","ó")
+               .replace("&uacute;","ú");
+    }
 }
 

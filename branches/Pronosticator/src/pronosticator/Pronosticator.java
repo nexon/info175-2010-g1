@@ -12,6 +12,7 @@
 package pronosticator;
 
 import java.util.LinkedList;
+import javax.swing.ImageIcon;
 
 /*
  *
@@ -55,18 +56,18 @@ public class Pronosticator extends javax.swing.JPanel {
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         listaDeCiudades = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        tempMaxD2 = new javax.swing.JLabel();
+        iconoD2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         tempMaxD4 = new javax.swing.JLabel();
-        tempMaxD1 = new javax.swing.JLabel();
         tempMaxD3 = new javax.swing.JLabel();
         fechaD2 = new javax.swing.JLabel();
         fechaD3 = new javax.swing.JLabel();
         fechaD4 = new javax.swing.JLabel();
         fechaD1 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        tempMaxD1 = new javax.swing.JLabel();
         pronosticoD4 = new javax.swing.JLabel();
         pronosticoD1 = new javax.swing.JLabel();
         pronosticoD2 = new javax.swing.JLabel();
@@ -91,7 +92,7 @@ public class Pronosticator extends javax.swing.JPanel {
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator4.setName("jSeparator4"); // NOI18N
         add(jSeparator4);
-        jSeparator4.setBounds(140, 140, 12, 120);
+        jSeparator4.setBounds(140, 140, 12, 160);
 
         jSeparator5.setName("jSeparator5"); // NOI18N
         add(jSeparator5);
@@ -104,7 +105,7 @@ public class Pronosticator extends javax.swing.JPanel {
         jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator7.setName("jSeparator7"); // NOI18N
         add(jSeparator7);
-        jSeparator7.setBounds(310, 140, 10, 120);
+        jSeparator7.setBounds(310, 140, 10, 160);
 
         listaDeCiudades.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione Ciudad" }));
         listaDeCiudades.setName("listaDeCiudades"); // NOI18N
@@ -114,38 +115,39 @@ public class Pronosticator extends javax.swing.JPanel {
             }
         });
         add(listaDeCiudades);
-        listaDeCiudades.setBounds(10, 20, 190, 27);
+        listaDeCiudades.setBounds(10, 10, 190, 27);
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(pronosticator.PronosticatorApp.class).getContext().getResourceMap(Pronosticator.class);
-        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
-        jLabel2.setName("jLabel2"); // NOI18N
-        add(jLabel2);
-        jLabel2.setBounds(20, 170, 70, 60);
-
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
         jLabel3.setName("jLabel3"); // NOI18N
         add(jLabel3);
-        jLabel3.setBounds(160, 170, 70, 60);
+        jLabel3.setBounds(160, 150, 128, 128);
+
+        tempMaxD2.setFont(resourceMap.getFont("tempMaxD2.font")); // NOI18N
+        tempMaxD2.setText(resourceMap.getString("tempMaxD2.text")); // NOI18N
+        tempMaxD2.setName("tempMaxD2"); // NOI18N
+        add(tempMaxD2);
+        tempMaxD2.setBounds(40, 130, 110, 60);
+
+        iconoD2.setText(resourceMap.getString("iconoD2.text")); // NOI18N
+        iconoD2.setName("iconoD2"); // NOI18N
+        add(iconoD2);
+        iconoD2.setBounds(10, 150, 128, 128);
 
         jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
         jLabel4.setName("jLabel4"); // NOI18N
         add(jLabel4);
-        jLabel4.setBounds(280, 20, 70, 60);
+        jLabel4.setBounds(350, 10, 128, 128);
 
         jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
         jLabel5.setName("jLabel5"); // NOI18N
         add(jLabel5);
-        jLabel5.setBounds(330, 170, 70, 60);
+        jLabel5.setBounds(330, 150, 128, 128);
 
         tempMaxD4.setText(resourceMap.getString("tempMaxD4.text")); // NOI18N
         tempMaxD4.setName("tempMaxD4"); // NOI18N
         add(tempMaxD4);
         tempMaxD4.setBounds(410, 150, 70, 20);
-
-        tempMaxD1.setText(resourceMap.getString("tempMaxD1.text")); // NOI18N
-        tempMaxD1.setName("tempMaxD1"); // NOI18N
-        add(tempMaxD1);
-        tempMaxD1.setBounds(80, 150, 60, 20);
 
         tempMaxD3.setText(resourceMap.getString("tempMaxD3.text")); // NOI18N
         tempMaxD3.setName("tempMaxD3"); // NOI18N
@@ -155,7 +157,7 @@ public class Pronosticator extends javax.swing.JPanel {
         fechaD2.setText(resourceMap.getString("fechaD2.text")); // NOI18N
         fechaD2.setName("fechaD2"); // NOI18N
         add(fechaD2);
-        fechaD2.setBounds(20, 230, 120, 16);
+        fechaD2.setBounds(10, 230, 120, 16);
 
         fechaD3.setText(resourceMap.getString("fechaD3.text")); // NOI18N
         fechaD3.setName("fechaD3"); // NOI18N
@@ -170,12 +172,13 @@ public class Pronosticator extends javax.swing.JPanel {
         fechaD1.setText(resourceMap.getString("fechaD1.text")); // NOI18N
         fechaD1.setName("fechaD1"); // NOI18N
         add(fechaD1);
-        fechaD1.setBounds(280, 100, 70, 16);
+        fechaD1.setBounds(340, 120, 140, 16);
 
-        jLabel12.setText(resourceMap.getString("jLabel12.text")); // NOI18N
-        jLabel12.setName("jLabel12"); // NOI18N
-        add(jLabel12);
-        jLabel12.setBounds(140, 10, 50, 40);
+        tempMaxD1.setFont(resourceMap.getFont("tempMaxD1.font")); // NOI18N
+        tempMaxD1.setText(resourceMap.getString("tempMaxD1.text")); // NOI18N
+        tempMaxD1.setName("tempMaxD1"); // NOI18N
+        add(tempMaxD1);
+        tempMaxD1.setBounds(370, 0, 110, 70);
 
         pronosticoD4.setText(resourceMap.getString("pronosticoD4.text")); // NOI18N
         pronosticoD4.setName("pronosticoD4"); // NOI18N
@@ -185,12 +188,12 @@ public class Pronosticator extends javax.swing.JPanel {
         pronosticoD1.setText(resourceMap.getString("pronosticoD1.text")); // NOI18N
         pronosticoD1.setName("pronosticoD1"); // NOI18N
         add(pronosticoD1);
-        pronosticoD1.setBounds(140, 60, 80, 16);
+        pronosticoD1.setBounds(10, 60, 230, 16);
 
         pronosticoD2.setText(resourceMap.getString("pronosticoD2.text")); // NOI18N
         pronosticoD2.setName("pronosticoD2"); // NOI18N
         add(pronosticoD2);
-        pronosticoD2.setBounds(20, 240, 120, 16);
+        pronosticoD2.setBounds(10, 240, 140, 50);
 
         pronosticoD3.setText(resourceMap.getString("pronosticoD3.text")); // NOI18N
         pronosticoD3.setName("pronosticoD3"); // NOI18N
@@ -205,7 +208,8 @@ public class Pronosticator extends javax.swing.JPanel {
 
         /* Obteniendo temperaturas */
 
-        tempMaxD1.setText(""+tmp.obtenerPronostico().obtenerTemperaturaMax()[1]+"º");
+        tempMaxD1.setText(""+tmp.obtenerPronostico().obtenerTemperaturaMax()[0]+"º");
+        tempMaxD2.setText(""+tmp.obtenerPronostico().obtenerTemperaturaMax()[1]+"º");
         tempMaxD3.setText(""+tmp.obtenerPronostico().obtenerTemperaturaMax()[2]+"º");
         tempMaxD4.setText(""+tmp.obtenerPronostico().obtenerTemperaturaMax()[3]+"º");
 
@@ -215,6 +219,12 @@ public class Pronosticator extends javax.swing.JPanel {
         fechaD2.setText(tmp.obtenerPronostico().obtenerFecha()[1]);
         fechaD3.setText(tmp.obtenerPronostico().obtenerFecha()[2]);
         fechaD4.setText(tmp.obtenerPronostico().obtenerFecha()[3]);
+
+        /* Obteniendo Iconos */
+        ImageIcon ic;
+//        if(tmp.obtenerPronostico().obtenerIconos()[1] == "")
+        iconoD2.setDisabledIcon(new ImageIcon(getClass().getResource("tiempoicons/00.png")));
+        iconoD2.setEnabled(false);
 
         /* Obteniendo los pronosticos en palabras */
         
@@ -227,8 +237,7 @@ public class Pronosticator extends javax.swing.JPanel {
     private javax.swing.JLabel fechaD2;
     private javax.swing.JLabel fechaD3;
     private javax.swing.JLabel fechaD4;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel iconoD2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -245,6 +254,7 @@ public class Pronosticator extends javax.swing.JPanel {
     private javax.swing.JLabel pronosticoD3;
     private javax.swing.JLabel pronosticoD4;
     private javax.swing.JLabel tempMaxD1;
+    private javax.swing.JLabel tempMaxD2;
     private javax.swing.JLabel tempMaxD3;
     private javax.swing.JLabel tempMaxD4;
     // End of variables declaration//GEN-END:variables
