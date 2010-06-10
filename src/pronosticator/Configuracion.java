@@ -1,13 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package pronosticator;
 
 /**
- *
- * @author albertolagos
+ * Clase que permite guardar/rescatar la ultima ciudad seleccionada en caso de cerrar/abrir el widget.
+ * 
+ * @author Alberto Lagos T.
  */
 public class Configuracion {
 

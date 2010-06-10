@@ -1,20 +1,22 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package pronosticator;
 import java.net.*;
 import java.io.*;
-import java.util.Date;
+
+
 /**
- *
- * @author albertolagos
+ * Clase realiza la conexión con meteochile para obtener los datos.
+ * @author Alberto Lagos T.
  */
+
 public class URLConnectionReader {
     String direccion;
     URLConnection conexion; //"http://www.meteochile.cl/js/pronostico_general.js"
 
+    /**
+     * Constructor de la clase, que recibe como parametro una url.
+     * 
+     * @param s
+     */
     public URLConnectionReader(String s) {
         
         try	{
@@ -24,6 +26,12 @@ public class URLConnectionReader {
                 System.out.println("Error al Conectar");
         }
    }
+
+    /**
+     * Metodo que obtiene (lee) los datos, preeviamente establecida la conexión.
+     *
+     * @return String
+     */
 
     public String obtenerDatos() {
          String ret = "";

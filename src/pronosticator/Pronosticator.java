@@ -1,23 +1,14 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * Pronosticator.java
- *
- * Created on 28-may-2010, 15:20:40
- */
-
 package pronosticator;
 
 import java.util.LinkedList;
 import javax.swing.ImageIcon;
 
-/*
- *
- * @author albertolagos
+/**
+ * Clase Principal que implementa el widget (JPanel).
+ * 
+ * @author Alberto Lagos T.
  */
+
 public class Pronosticator extends javax.swing.JPanel {
     private LinkedList<Ciudad> ciudades;
     private Parser datos;
