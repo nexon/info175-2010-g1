@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package pronosticator;
 
 import java.nio.charset.Charset;
@@ -15,10 +10,22 @@ import java.util.Date;
 public class Parser extends URLConnectionReader {
     private String dato;
 
+    /**
+     *  Constructor de clase.
+     *  @param s
+     *  @author Alberto Lagos T.
+     */
+
     public Parser(String s) {
         super(s);
         dato = obtenerDatos();
     }
+
+    /**
+     *  Metodo que obtiene las fechas (todas) de los dias.
+     *  @return String[][]
+     *  @author Alberto Lagos T.
+     */
 
     public String[][] getFecha() {
         String[] tmpC = this.getCiudad();
@@ -38,6 +45,14 @@ public class Parser extends URLConnectionReader {
         }
         return fechasCiudades;
     }
+
+    /**
+     *  Metodo que obtiene las ciudades (todas) desde Metochile.
+     *
+     *  @return String[]
+     *  @author Alberto Lagos T.
+     */
+
     public String[] getCiudad() {
         int inicio = dato.indexOf("var ciudades='");
         String ciudades1 = dato.substring(inicio,dato.length());
@@ -58,6 +73,13 @@ public class Parser extends URLConnectionReader {
         return lista;
 
     }
+
+     /**
+     *  Metodo que obtiene el nombre de los iconos a utilizar para los pronosticos del tiempo
+     *
+     *  @return String[][]
+     *  @author Alberto Lagos T.
+     */
     public String[][] getImagen() {
         String[] tmpC = this.getCiudad();
         String iconosCiudades[][] = new String[18][5];
@@ -75,6 +97,13 @@ public class Parser extends URLConnectionReader {
         
         return iconosCiudades;
     }
+
+     /**
+     *  Metodo que obtiene las temperaturas (todas) correspondientes a las ciudades y a los dias.
+     *
+     *  @return String[][]
+     *  @author Alberto Lagos T.
+     */
     public  String[][] getTemperatura() {
         String[] tmpC = this.getCiudad();
         String temperaturaCiudades[][] = new String[18][5];
@@ -98,6 +127,13 @@ public class Parser extends URLConnectionReader {
         }
         return temperaturaCiudades;
     }
+
+     /**
+     *  Metodo que obtiene el pronostico (en texto) para cada ciudad.
+     *
+     *  @return String[][]
+     *  @author Alberto Lagos T.
+     */
     public String[][] getPronostico() {
         String[] tmpC = getCiudad();
         String pronosticoCiudades[][] = new String[18][5];
@@ -115,6 +151,13 @@ public class Parser extends URLConnectionReader {
         return pronosticoCiudades;
 
     }
+
+     /**
+     *  Metodo que genera objetos de la clase Ciudad que contienen los datos metereologicos para cada ciudad.
+     *
+     *  @return String[]
+     *  @author Alberto Lagos T.
+     */
     public Ciudad [] generarCiudades() {
         Ciudad[] lista = new Ciudad[18];
         String[] c = getCiudad();
@@ -140,6 +183,13 @@ public class Parser extends URLConnectionReader {
         return lista;
     }
 
+     /**
+     *  Metodo que cambia los caracteres especiales (acentos y ñ) que entrega Meteochile.
+     *
+     *  @param s
+     *  @return String[]
+     *  @author Alberto Lagos T.
+     */
     public static String changeChar(String s) {
         return s.replace("&ntilde;","ñ")
                .replace("&Ntilde;","Ñ")

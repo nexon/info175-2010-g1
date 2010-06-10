@@ -1,15 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package pronosticator;
 
-import java.util.LinkedList;
 
 /**
- *
- * @author albertolagos
+ * Clase que almacena el contenido metereologico para cada ciudad (temperatura, pronostico, etc)
+ * 
+ * @author Alberto Lagos T.
  */
 public class Ciudad {
     private String nombre;
