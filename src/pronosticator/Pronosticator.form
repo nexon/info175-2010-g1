@@ -114,10 +114,22 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="tempMaxD3">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="jLabel3.text"/>
-        <Property name="name" type="java.lang.String" value="jLabel3" noResource="true"/>
+        <Property name="font" type="java.awt.Font" resourceKey="tempMaxD3.font"/>
+        <Property name="text" type="java.lang.String" resourceKey="tempMaxD3.text"/>
+        <Property name="name" type="java.lang.String" value="tempMaxD3" noResource="true"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="210" y="130" width="100" height="60"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="iconoD3">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="iconoD3.text"/>
+        <Property name="name" type="java.lang.String" value="iconoD3" noResource="true"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -148,10 +160,22 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="tempMaxD1">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="jLabel4.text"/>
-        <Property name="name" type="java.lang.String" value="jLabel4" noResource="true"/>
+        <Property name="font" type="java.awt.Font" resourceKey="tempMaxD1.font"/>
+        <Property name="text" type="java.lang.String" resourceKey="tempMaxD1.text"/>
+        <Property name="name" type="java.lang.String" value="tempMaxD1" noResource="true"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="370" y="0" width="110" height="70"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="iconoD1">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="iconoD1.text"/>
+        <Property name="name" type="java.lang.String" value="iconoD1" noResource="true"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -159,36 +183,26 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="jLabel5.text"/>
-        <Property name="name" type="java.lang.String" value="jLabel5" noResource="true"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="330" y="150" width="128" height="128"/>
-        </Constraint>
-      </Constraints>
-    </Component>
     <Component class="javax.swing.JLabel" name="tempMaxD4">
       <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="tempMaxD4.font"/>
         <Property name="text" type="java.lang.String" resourceKey="tempMaxD4.text"/>
         <Property name="name" type="java.lang.String" value="tempMaxD4" noResource="true"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="410" y="150" width="70" height="20"/>
+          <AbsoluteConstraints x="380" y="130" width="100" height="60"/>
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="tempMaxD3">
+    <Component class="javax.swing.JLabel" name="iconoD4">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="tempMaxD3.text"/>
-        <Property name="name" type="java.lang.String" value="tempMaxD3" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="iconoD4.text"/>
+        <Property name="name" type="java.lang.String" value="iconoD4" noResource="true"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="230" y="150" width="80" height="20"/>
+          <AbsoluteConstraints x="330" y="150" width="128" height="128"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -233,18 +247,6 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="340" y="120" width="140" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JLabel" name="tempMaxD1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" resourceKey="tempMaxD1.font"/>
-        <Property name="text" type="java.lang.String" resourceKey="tempMaxD1.text"/>
-        <Property name="name" type="java.lang.String" value="tempMaxD1" noResource="true"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="370" y="0" width="110" height="70"/>
         </Constraint>
       </Constraints>
     </Component>
