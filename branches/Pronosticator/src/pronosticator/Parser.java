@@ -33,6 +33,7 @@ public class Parser extends URLConnectionReader {
              for(int j=0;j<fechasCiudades[0].length; j++) {
                  fechasCiudades[i][j] = fechas.substring(0, fechas.indexOf('|'));
                 fechas = fechas.substring(fechas.indexOf('|')+1);
+                fechasCiudades[i][j] = changeChar(fechasCiudades[i][j]);
              }       
         }
         return fechasCiudades;
@@ -82,8 +83,13 @@ public class Parser extends URLConnectionReader {
             int finall = dato.indexOf("pronosticos['"+tmpC[i]+"']='");
             String temperaturas = dato.substring(inicio, finall-2);
             temperaturas = temperaturas.substring(temperaturas.indexOf('=')+2);
-            temperaturaCiudades[i][0] = temperaturas.substring(1,temperaturas.indexOf('|'));
-            temperaturas = temperaturas.substring(temperaturas.indexOf('|')+1);
+            if(!Character.isDigit(temperaturas.charAt(0))) {
+                 temperaturaCiudades[i][0] = temperaturas.substring(1,temperaturas.indexOf('|'));
+                 temperaturas = temperaturas.substring(temperaturas.indexOf('|')+1);
+            } else {
+                temperaturaCiudades[i][0] = temperaturas.substring(0,temperaturas.indexOf('|'));
+                temperaturas = temperaturas.substring(temperaturas.indexOf('|')+1);
+            }
             for(int j=1;j<temperaturaCiudades[0].length-1;j++) {
                     temperaturaCiudades[i][j] = temperaturas.substring(0,temperaturas.indexOf('|'));
                     temperaturas = temperaturas.substring(temperaturas.indexOf('|')+1);
@@ -115,8 +121,13 @@ public class Parser extends URLConnectionReader {
         for(int i =0;i<lista.length-1;i++) {
             String[] tmpTemp = getTemperatura()[i];
             Double[] tempMax = new Double[5], tempMin = new Double[5];
-            tempMax[0] = Double.parseDouble(tmpTemp[0]);
-            tempMin[0] = 0.0;
+            if(!Character.isDigit(tmpTemp[0].charAt(0))) {
+                tempMax[0] = Double.parseDouble(tmpTemp[0]);
+                tempMin[0] = 0.0;
+            } else {
+                tempMin[0] = Double.parseDouble(tmpTemp[0].substring(0,tmpTemp[0].indexOf('/')));
+                tempMax[0] = Double.parseDouble(tmpTemp[0].substring(tmpTemp[0].indexOf('/')+1).replace("'", ""));
+            }
             for(int j=1;j<tmpTemp.length;j++) {
                 tempMin[j] = Double.parseDouble(tmpTemp[j].substring(0,tmpTemp[j].indexOf('/')));
                 tempMax[j] = Double.parseDouble(tmpTemp[j].substring(tmpTemp[j].indexOf('/')+1).replace("'", ""));
