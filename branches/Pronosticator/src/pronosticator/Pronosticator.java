@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
  */
 
 public class Pronosticator extends javax.swing.JPanel {
+    
     private LinkedList<Ciudad> ciudades;
     private Parser datos;
     private Configuracion conf;

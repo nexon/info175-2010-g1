@@ -168,7 +168,6 @@ public class Parser extends URLConnectionReader {
                 tempMax[0] = Double.parseDouble(tmpTemp[0]);
                 tempMin[0] = 0.0;
             } else {
-                tempMin[0] = Double.parseDouble(tmpTemp[0].substring(0,tmpTemp[0].indexOf('/')));
                 tempMax[0] = Double.parseDouble(tmpTemp[0].substring(tmpTemp[0].indexOf('/')+1).replace("'", ""));
             }
             for(int j=1;j<tmpTemp.length;j++) {
