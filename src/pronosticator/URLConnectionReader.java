@@ -9,8 +9,9 @@ import java.io.*;
  */
 
 public class URLConnectionReader {
-    String direccion;
-    URLConnection conexion; //"http://www.meteochile.cl/js/pronostico_general.js"
+    private String direccion;
+    private boolean estado;
+    private URLConnection conexion; //"http://www.meteochile.cl/js/pronostico_general.js"
 
     /**
      * Constructor de la clase, que recibe como parametro una url.
@@ -18,12 +19,11 @@ public class URLConnectionReader {
      * @param s
      */
     public URLConnectionReader(String s) {
-        
-        try	{
-                URL weather = new URL(s);
-                this.conexion = weather.openConnection();
+        try {
+            URL weather = new URL(s);
+            this.conexion = weather.openConnection();
         } catch(Exception e) {
-                System.out.println("Error al Conectar");
+                //System.out.println("Error al Conectar");
         }
    }
 
@@ -46,10 +46,15 @@ public class URLConnectionReader {
                         i++;
                 }
                 in.close();
+                estado = true;
          } catch(Exception e) {
-           
+           estado = false;
         }
          return ret;
+    }
+
+    public boolean obtenerEstado() {
+        return this.estado;
     }
 
 }
