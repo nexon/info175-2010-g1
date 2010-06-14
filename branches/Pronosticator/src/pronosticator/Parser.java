@@ -1,8 +1,5 @@
 package pronosticator;
 
-import java.nio.charset.Charset;
-import java.util.Date;
-
 /**
  * Clase que permite obtener los datos de meteochile y.... chan chan chanchaaaan.
  * @author Alberto Lagos T.
@@ -178,7 +175,6 @@ public class Parser extends URLConnectionReader {
             Tiempo tmp = new Tiempo(getFecha()[i], tempMax, tempMin, getPronostico()[i], getImagen()[i]);
             lista[i] = new Ciudad(changeChar(c[i]), tmp);
         }
-
         return lista;
     }
 

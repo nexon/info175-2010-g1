@@ -2,6 +2,7 @@ package pronosticator;
 
 import java.util.LinkedList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  * Clase Principal que implementa el widget (JPanel).
@@ -22,14 +23,16 @@ public class Pronosticator extends javax.swing.JPanel {
     }
     public void ejecutar() {
         datos = new Parser("http://www.meteochile.cl/js/pronostico_general.js");
-        Ciudad c[] = datos.generarCiudades();
-        ciudades = new LinkedList();
-        for(int i = 0;i<c.length-1;i++) {
-            ciudades.addLast(c[i]);
-            listaDeCiudades.addItem((ciudades.get(i)).obtenerNombre());
+        if(datos.obtenerEstado()) {
+             Ciudad c[] = datos.generarCiudades();
+            ciudades = new LinkedList();
+            for(int i = 0;i<c.length-1;i++) {
+                ciudades.addLast(c[i]);
+                listaDeCiudades.addItem((ciudades.get(i)).obtenerNombre());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "HOLA");
         }
-        
-        
     }
     /** This method is called from within the constructor to
      * initialize the form.
