@@ -68,8 +68,11 @@ public class Pronosticator extends javax.swing.JPanel {
         pronosticoD2 = new javax.swing.JLabel();
         pronosticoD3 = new javax.swing.JLabel();
 
+        setLocation(new java.awt.Point(500, 300));
+        setMaximumSize(new java.awt.Dimension(500, 300));
+        setMinimumSize(new java.awt.Dimension(500, 300));
         setName("Form"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(380, 269));
+        setPreferredSize(new java.awt.Dimension(500, 300));
         setLayout(null);
 
         jSeparator2.setName("jSeparator2"); // NOI18N
@@ -117,23 +120,23 @@ public class Pronosticator extends javax.swing.JPanel {
         tempMaxD3.setText(resourceMap.getString("tempMaxD3.text")); // NOI18N
         tempMaxD3.setName("tempMaxD3"); // NOI18N
         add(tempMaxD3);
-        tempMaxD3.setBounds(210, 130, 100, 60);
+        tempMaxD3.setBounds(160, 160, 100, 60);
 
         iconoD3.setText(resourceMap.getString("iconoD3.text")); // NOI18N
         iconoD3.setName("iconoD3"); // NOI18N
         add(iconoD3);
-        iconoD3.setBounds(160, 150, 128, 128);
+        iconoD3.setBounds(160, 200, 64, 64);
 
         tempMaxD2.setFont(resourceMap.getFont("tempMaxD2.font")); // NOI18N
         tempMaxD2.setText(resourceMap.getString("tempMaxD2.text")); // NOI18N
         tempMaxD2.setName("tempMaxD2"); // NOI18N
         add(tempMaxD2);
-        tempMaxD2.setBounds(40, 130, 110, 60);
+        tempMaxD2.setBounds(20, 160, 110, 60);
 
         iconoD2.setText(resourceMap.getString("iconoD2.text")); // NOI18N
         iconoD2.setName("iconoD2"); // NOI18N
         add(iconoD2);
-        iconoD2.setBounds(10, 150, 128, 128);
+        iconoD2.setBounds(20, 200, 64, 64);
 
         tempMaxD1.setFont(resourceMap.getFont("tempMaxD1.font")); // NOI18N
         tempMaxD1.setText(resourceMap.getString("tempMaxD1.text")); // NOI18N
@@ -150,27 +153,30 @@ public class Pronosticator extends javax.swing.JPanel {
         tempMaxD4.setText(resourceMap.getString("tempMaxD4.text")); // NOI18N
         tempMaxD4.setName("tempMaxD4"); // NOI18N
         add(tempMaxD4);
-        tempMaxD4.setBounds(380, 130, 100, 60);
+        tempMaxD4.setBounds(330, 160, 100, 60);
 
         iconoD4.setText(resourceMap.getString("iconoD4.text")); // NOI18N
         iconoD4.setName("iconoD4"); // NOI18N
         add(iconoD4);
-        iconoD4.setBounds(330, 150, 128, 128);
+        iconoD4.setBounds(320, 200, 64, 64);
 
+        fechaD2.setFont(resourceMap.getFont("fechaD2.font")); // NOI18N
         fechaD2.setText(resourceMap.getString("fechaD2.text")); // NOI18N
         fechaD2.setName("fechaD2"); // NOI18N
         add(fechaD2);
-        fechaD2.setBounds(10, 230, 120, 16);
+        fechaD2.setBounds(20, 140, 130, 20);
 
+        fechaD3.setFont(resourceMap.getFont("fechaD3.font")); // NOI18N
         fechaD3.setText(resourceMap.getString("fechaD3.text")); // NOI18N
         fechaD3.setName("fechaD3"); // NOI18N
         add(fechaD3);
-        fechaD3.setBounds(210, 220, 100, 16);
+        fechaD3.setBounds(170, 140, 130, 22);
 
+        fechaD4.setFont(resourceMap.getFont("fechaD4.font")); // NOI18N
         fechaD4.setText(resourceMap.getString("fechaD4.text")); // NOI18N
         fechaD4.setName("fechaD4"); // NOI18N
         add(fechaD4);
-        fechaD4.setBounds(330, 220, 150, 16);
+        fechaD4.setBounds(340, 140, 150, 20);
 
         fechaD1.setText(resourceMap.getString("fechaD1.text")); // NOI18N
         fechaD1.setName("fechaD1"); // NOI18N
@@ -180,7 +186,7 @@ public class Pronosticator extends javax.swing.JPanel {
         pronosticoD4.setText(resourceMap.getString("pronosticoD4.text")); // NOI18N
         pronosticoD4.setName("pronosticoD4"); // NOI18N
         add(pronosticoD4);
-        pronosticoD4.setBounds(330, 240, 150, 16);
+        pronosticoD4.setBounds(320, 230, 160, 90);
 
         pronosticoD1.setText(resourceMap.getString("pronosticoD1.text")); // NOI18N
         pronosticoD1.setName("pronosticoD1"); // NOI18N
@@ -190,12 +196,12 @@ public class Pronosticator extends javax.swing.JPanel {
         pronosticoD2.setText(resourceMap.getString("pronosticoD2.text")); // NOI18N
         pronosticoD2.setName("pronosticoD2"); // NOI18N
         add(pronosticoD2);
-        pronosticoD2.setBounds(10, 240, 140, 50);
+        pronosticoD2.setBounds(0, 230, 150, 90);
 
         pronosticoD3.setText(resourceMap.getString("pronosticoD3.text")); // NOI18N
         pronosticoD3.setName("pronosticoD3"); // NOI18N
         add(pronosticoD3);
-        pronosticoD3.setBounds(210, 240, 100, 16);
+        pronosticoD3.setBounds(150, 236, 160, 80);
     }// </editor-fold>//GEN-END:initComponents
 
     private void listaDeCiudadesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaDeCiudadesItemStateChanged
@@ -218,14 +224,28 @@ public class Pronosticator extends javax.swing.JPanel {
         fechaD4.setText(tmp.obtenerPronostico().obtenerFecha()[3]);
 
         /* Obteniendo Iconos */
-        ImageIcon ic;
-//        if(tmp.obtenerPronostico().obtenerIconos()[1] == "")
-        iconoD2.setDisabledIcon(new ImageIcon(getClass().getResource("tiempoicons/00.png")));
+
+        System.out.println(tmp.obtenerPronostico().obtenerIconos()[0].substring(0,tmp.obtenerPronostico().obtenerIconos()[0].indexOf('.'))+".png");
+        System.out.println(tmp.obtenerPronostico().obtenerIconos()[1].substring(0,tmp.obtenerPronostico().obtenerIconos()[1].indexOf('.'))+".png");
+        System.out.println(tmp.obtenerPronostico().obtenerIconos()[2].substring(0,tmp.obtenerPronostico().obtenerIconos()[2].indexOf('.'))+".png");
+        System.out.println(tmp.obtenerPronostico().obtenerIconos()[3].substring(0,tmp.obtenerPronostico().obtenerIconos()[3].indexOf('.'))+".png");
+        iconoD1.setDisabledIcon(new ImageIcon(getClass().getResource("tiempoicons/"+tmp.obtenerPronostico().obtenerIconos()[0].substring(0,tmp.obtenerPronostico().obtenerIconos()[0].indexOf('.'))+".png")));
+        iconoD2.setDisabledIcon(new ImageIcon(getClass().getResource("tiempoicons/"+tmp.obtenerPronostico().obtenerIconos()[1].substring(0,tmp.obtenerPronostico().obtenerIconos()[1].indexOf('.'))+".png")));
+        iconoD3.setDisabledIcon(new ImageIcon(getClass().getResource("tiempoicons/"+tmp.obtenerPronostico().obtenerIconos()[2].substring(0,tmp.obtenerPronostico().obtenerIconos()[2].indexOf('.'))+".png")));
+        iconoD4.setDisabledIcon(new ImageIcon(getClass().getResource("tiempoicons/"+tmp.obtenerPronostico().obtenerIconos()[3].substring(0,tmp.obtenerPronostico().obtenerIconos()[3].indexOf('.'))+".png")));
+
+        iconoD1.setEnabled(false);
         iconoD2.setEnabled(false);
+        iconoD3.setEnabled(false);
+        iconoD4.setEnabled(false);
+
 
         /* Obteniendo los pronosticos en palabras */
         
         pronosticoD1.setText(tmp.obtenerPronostico().obtenerPronostico()[0]);
+        pronosticoD2.setText(tmp.obtenerPronostico().obtenerPronostico()[1]);
+        pronosticoD3.setText(tmp.obtenerPronostico().obtenerPronostico()[2]);
+        pronosticoD4.setText(tmp.obtenerPronostico().obtenerPronostico()[3]);
     }//GEN-LAST:event_listaDeCiudadesItemStateChanged
 
 
