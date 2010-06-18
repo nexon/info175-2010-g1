@@ -51,19 +51,22 @@ public class Parser extends URLConnectionReader {
      */
 
     public String[] getCiudad() {
+        String region[] = {"I","II", "III", "IV", "V","RM", "VI", "VII", "VIII", "IX", "XIV", "X", "XI", "XII", "V", "V"};
         int inicio = dato.indexOf("var ciudades='");
         String ciudades1 = dato.substring(inicio,dato.length());
         String ciudad[] = ciudades1.split("var ciudades='");
         String ciudad1[] = ciudad[1].split("';");
         String ciudadesSolas[] = new String[18];
         String lista[] = new String[18];
-
+        System.out.println(ciudadesSolas.length);
          for(int i=0;i<ciudadesSolas.length-2;i++) {
             if(ciudad1[0].indexOf('|') != -1) {
                     ciudad1[0] = ciudad1[0].substring(ciudad1[0].indexOf('|')+1).toString();
-                    lista[i] = ciudad1[0].substring(0,ciudad1[0].indexOf('|'));
+                    lista[i] =  ciudad1[0].substring(0,ciudad1[0].indexOf('|'));
+                    System.out.println(region[i]+" - "+ciudad1[0].substring(0,ciudad1[0].indexOf('|')));
             } else {
-                    lista[i] =ciudad1[0];
+                    lista[i] = ciudad1[0];
+                    //region[i]+" - "+
             }
         }
         lista[16] = ciudad1[0].substring(ciudad1[0].lastIndexOf('|')+1);
@@ -79,7 +82,7 @@ public class Parser extends URLConnectionReader {
      */
     public String[][] getImagen() {
         String[] tmpC = this.getCiudad();
-        String iconosCiudades[][] = new String[18][5];
+        String iconosCiudades[][] = new String[17][5];
         for(int i=0;i<iconosCiudades.length-1;i++) {
             int inicio = dato.indexOf("iconos['"+tmpC[i]+"']='");
             int finall  = dato.indexOf("fechas['"+tmpC[i]+"']='");
@@ -103,7 +106,7 @@ public class Parser extends URLConnectionReader {
      */
     public  String[][] getTemperatura() {
         String[] tmpC = this.getCiudad();
-        String temperaturaCiudades[][] = new String[18][5];
+        String temperaturaCiudades[][] = new String[17][5];
         for(int i=0;i<tmpC.length-1;i++) {
             int inicio = dato.indexOf("temperaturas['"+tmpC[i]+"']='");
             int finall = dato.indexOf("pronosticos['"+tmpC[i]+"']='");
@@ -133,7 +136,7 @@ public class Parser extends URLConnectionReader {
      */
     public String[][] getPronostico() {
         String[] tmpC = getCiudad();
-        String pronosticoCiudades[][] = new String[18][5];
+        String pronosticoCiudades[][] = new String[17][5];
         for(int i = 0;i<tmpC.length-1;i++) {
             int inicio = dato.indexOf("pronosticos['"+tmpC[i]+"']='");
             int finall = dato.indexOf("iconos['"+tmpC[i]+"']='");
@@ -156,8 +159,12 @@ public class Parser extends URLConnectionReader {
      *  @author Alberto Lagos T.
      */
     public Ciudad [] generarCiudades() {
-        Ciudad[] lista = new Ciudad[18];
+        Ciudad[] lista = new Ciudad[17];
+        String region[] = {"I","II", "III", "IV", "V","RM", "VI", "VII", "VIII", "IX", "XIV", "X", "XI", "XII", "V", "V", "",""};
         String[] c = getCiudad();
+        for(int i =0;i<lista.length;i++) {
+            c[i] = region[i]+" - "+c[i];
+        }
         for(int i =0;i<lista.length-1;i++) {
             String[] tmpTemp = getTemperatura()[i];
             Double[] tempMax = new Double[5], tempMin = new Double[5];
