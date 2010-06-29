@@ -72,6 +72,7 @@ public class Parser extends URLConnectionReader {
             }
         }
         lista[15] = ciudad1[0].substring(ciudad1[0].lastIndexOf('|')+1);
+
         return lista;
 
     }
