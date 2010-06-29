@@ -33,12 +33,31 @@ public class ParserTest extends TestCase {
     public void setUp() {
     }
 
-    @After
-    public void tearDown() {
+    @Test
+    public void testGetCiudad() {
+        Parser datos;
+        String ciudad []={null,"Arica","Iquique","Antofagasta","Copiap&oacute;","La Serena/Coquimbo"
+            ,"Vi&ntilde;a del Mar/Valpara&iacute;so"
+            ,"Santiago Sector Centro","Rancagua","Talca","Concepci&oacute;n"
+            ,"Temuco","Valdivia","Puerto Montt","Coyhaique","Punta Arenas","Pen&iacute;nsula Ant&aacute;rtica"};
+
+        datos = new Parser("http://www.meteochile.cl/js/pronostico_general.js");
+        String c[]= datos.getCiudad();
+        for(int i=0;i<17;i++){
+            System.out.println(c[i]+"T  ");
+            System.out.println(ciudad[i]+"F ");
+            System.out.println("");
+
+        }
+        org.junit.Assert.assertArrayEquals(ciudad,c);
+        
+
+
     }
 
     /**
      * Test of getTemperatura method, of class Parser.
+
      */
     @Test
     public void testGetchangeChar() {
