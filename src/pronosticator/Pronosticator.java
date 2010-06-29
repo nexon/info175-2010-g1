@@ -194,7 +194,7 @@ public class Pronosticator extends javax.swing.JPanel {
         fechaD2.setText(resourceMap.getString("fechaD2.text")); // NOI18N
         fechaD2.setName("fechaD2"); // NOI18N
         add(fechaD2);
-        fechaD2.setBounds(20, 130, 130, 20);
+        fechaD2.setBounds(0, 130, 130, 20);
 
         fechaD3.setFont(resourceMap.getFont("fechaD3.font")); // NOI18N
         fechaD3.setText(resourceMap.getString("fechaD3.text")); // NOI18N
