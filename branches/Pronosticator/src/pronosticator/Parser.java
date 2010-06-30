@@ -78,7 +78,6 @@ public class Parser extends URLConnectionReader {
                     lista[i] = ciudad1[0];
             }
               */
-            System.out.println(lista[i]);
         }
         //lista[15] = ciudad1[0].substring(ciudad1[0].lastIndexOf('|')+1);
         
@@ -134,9 +133,7 @@ public class Parser extends URLConnectionReader {
                  } else {
                     temperaturaCiudades[i][0] = temperaturas.substring(1,temperaturas.indexOf('|'));
                     temperaturas = temperaturas.substring(temperaturas.indexOf('|')+1);
-                 }
-
-                             System.out.println(temperaturas);
+                 }                             
 
             } else {
                 temperaturaCiudades[i][0] = temperaturas.substring(0,temperaturas.indexOf('|'));
@@ -184,7 +181,7 @@ public class Parser extends URLConnectionReader {
     public Ciudad [] generarCiudades() {
         Ciudad[] lista = new Ciudad[16];
         String[][] todasTemperaturas = getTemperatura();
-        String region[] = {"I","II", "III", "IV", "V","RM", "VI", "VII", "VIII", "IX", "XIV", "X", "XI", "XII", "V", "V", "",""};
+        String region[] = {"XV","I","II", "III", "IV", "V","RM", "VI", "VII", "VIII", "IX", "XIV", "X", "XI", "XII", "V", "V", "",""};
         String[] c = getCiudad();
         for(int i =1;i<lista.length;i++) {
             c[i] = region[i-1]+" - "+c[i];
@@ -201,13 +198,13 @@ public class Parser extends URLConnectionReader {
                 }
             } else {
                 tempMax[0] = Double.parseDouble(tmpTemp[0].substring(tmpTemp[0].indexOf('/')+1).replace("'", ""));
-                tempMin[0] = Double.parseDouble(tmpTemp[0].substring(0,tmpTemp[0].indexOf('/')));
+                //tempMin[0] = Double.parseDouble(tmpTemp[0].substring(0,tmpTemp[0].indexOf('/')));
             }
             for(int j=1;j<tmpTemp.length;j++) {
                 tempMin[j] = Double.parseDouble(tmpTemp[j].substring(0,tmpTemp[j].indexOf('/')));
                 tempMax[j] = Double.parseDouble(tmpTemp[j].substring(tmpTemp[j].indexOf('/')+1).replace("'", ""));
             }
-            //String[] aa = getFecha()[i];
+            
             Tiempo tmp = new Tiempo(getFecha()[i], tempMax, tempMin, getPronostico()[i], getImagen()[i]);
             lista[i] = new Ciudad(changeChar(c[i]), tmp);
         }

@@ -6,12 +6,10 @@
 package pronosticator;
 
 import junit.framework.TestCase;
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 /**
  *
  * @author albertolagos
@@ -43,9 +41,6 @@ public class ParserTest extends TestCase {
         datos = new Parser("http://www.meteochile.cl/js/pronostico_general.js");
         String c[]= datos.getCiudad();
         org.junit.Assert.assertArrayEquals(ciudad,c);
-        
-
-
     }
 
     /**

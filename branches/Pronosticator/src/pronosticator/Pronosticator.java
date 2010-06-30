@@ -46,7 +46,7 @@ public class Pronosticator extends javax.swing.JPanel {
             
             String fichero = conf.obtenerFicheroDeCiudades();
             ciudades = conf.obtenerListaDeCiudades(fichero);
-             for(int i = 1;i<ciudades.size();i++) {
+             for(int i = 0;i<ciudades.size();i++) {
                 listaDeCiudades.addItem(ciudades.get(i).obtenerNombre());
             }
         }
@@ -224,7 +224,6 @@ public class Pronosticator extends javax.swing.JPanel {
         //Properties properties = new Properties();
         
         if(listaDeCiudades.getSelectedIndex() != 0 ){
-            System.out.println(listaDeCiudades.getSelectedIndex());
             conf.guardarUltimaSeleccion(""+(listaDeCiudades.getSelectedIndex()));     // Guardamos la ultima seleccion.
             String fichero = conf.obtenerFicheroDeCiudades();                         // Obtenemos el nombre del fichero donde guardamos la lista enlazada de ciudades.
             conf.guardarListaDeCiudades(ciudades, fichero);                           // Guardamos la lista de ciudades actuales en el fichero de nombre fichero.
@@ -241,7 +240,6 @@ public class Pronosticator extends javax.swing.JPanel {
 
             /* Obteniendo fechas */
 
-             System.out.println(tmp.obtenerPronostico().obtenerFecha()[0]);
             fechaD1.setText(tmp.obtenerPronostico().obtenerFecha()[0]);
             fechaD2.setText(tmp.obtenerPronostico().obtenerFecha()[1]);
             fechaD3.setText(tmp.obtenerPronostico().obtenerFecha()[2]);
