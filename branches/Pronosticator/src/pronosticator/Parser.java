@@ -51,7 +51,7 @@ public class Parser extends URLConnectionReader {
      */
 
     public String[] getCiudad() {
-        String region[] = {"XVI","I","II", "III", "IV", "V","RM", "VI", "VII", "VIII", "IX", "XIV", "X", "XI", "XII", "XII"};
+        String region[] = {"XV","I","II", "III", "IV", "V","RM", "VI", "VII", "VIII", "IX", "XIV", "X", "XI", "XII", "XII"};
         int inicio = dato.indexOf("var ciudades='");
         String ciudades1 = dato.substring(inicio,dato.length());
         String ciudad[] = ciudades1.split("var ciudades='");
@@ -163,7 +163,7 @@ public class Parser extends URLConnectionReader {
      */
     public Ciudad [] generarCiudades() {
         Ciudad[] lista = new Ciudad[17];
-        String region[] = {"XVI","I","II", "III", "IV", "V","RM", "VI", "VII", "VIII", "IX", "XIV", "X", "XI", "XII", "XII", ""};
+        String region[] = {"XV","I","II", "III", "IV", "V","RM", "VI", "VII", "VIII", "IX", "XIV", "X", "XI", "XII", "XII", ""};
         String[] c = getCiudad();
         for(int i =1;i<lista.length;i++) {
             c[i] = region[i-1]+" - "+c[i];
