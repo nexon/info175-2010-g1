@@ -176,7 +176,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="60" width="110" height="70"/>
+          <AbsoluteConstraints x="10" y="60" width="220" height="70"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -269,6 +269,18 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="150" width="480" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="cInternet">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" resourceKey="cInternet.icon"/>
+        <Property name="text" type="java.lang.String" resourceKey="cInternet.text"/>
+        <Property name="name" type="java.lang.String" value="cInternet" noResource="true"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="430" y="250" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

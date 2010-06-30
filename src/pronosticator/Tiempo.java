@@ -1,11 +1,13 @@
 package pronosticator;
 
+import java.io.Serializable;
+
 /**
  * Clase que guarda el tiempo para cada ciudad.
  * 
  * @author Alberto Lagos T.
  */
-public class Tiempo {
+public class Tiempo implements Serializable {
     private String fecha[];
     private Double tMax[];
     private Double tMin[];
