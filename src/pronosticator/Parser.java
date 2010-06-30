@@ -26,9 +26,9 @@ public class Parser extends URLConnectionReader {
 
     public String[][] getFecha() {
         String[] tmpC = this.getCiudad();
-        String fechasCiudades[][] = new String[16][5];
+        String fechasCiudades[][] = new String[17][5];
 
-         for(int i=1; i<fechasCiudades.length;i++) {
+         for(int i=1; i<fechasCiudades.length-2;i++) {
             int inicio = dato.indexOf("fechas['"+tmpC[i]+"']='");
             int finall = dato.indexOf("temperaturas['"+tmpC[i+1]+"']='");
 
@@ -40,6 +40,16 @@ public class Parser extends URLConnectionReader {
                 fechasCiudades[i][j] = changeChar(fechasCiudades[i][j]);
              }
         }
+        int inicio = dato.indexOf("fechas['Punta Arenas']='");
+        int finall = dato.indexOf("temperaturas['Isla de Pascua']='");
+        String fechas = dato.substring(inicio,finall-2);
+        fechas = fechas.substring(fechas.indexOf('=')+2);
+        for(int j=0;j<fechasCiudades[0].length; j++) {
+            fechasCiudades[15][j] = fechas.substring(0, fechas.indexOf('|'));
+            fechas = fechas.substring(fechas.indexOf('|')+1);
+            fechasCiudades[15][j] = changeChar(fechasCiudades[15][j]);
+        }
+
         return fechasCiudades;
     }
 
@@ -55,20 +65,23 @@ public class Parser extends URLConnectionReader {
         String ciudades1 = dato.substring(inicio,dato.length());
         String ciudad[] = ciudades1.split("var ciudades='");
         String ciudad1[] = ciudad[1].split("';");
-        String ciudadesSolas[] = new String[17];
-        String lista[] = new String[17];
+        String lista[] = new String[16];
         lista[1] = "Arica";
-         for(int i=2;i<ciudadesSolas.length;i++) {
+         for(int i=2;i<lista.length;i++) {
+              ciudad1[0] = ciudad1[0].substring(ciudad1[0].indexOf('|')+1).toString();
+              lista[i] =  ciudad1[0].substring(0,ciudad1[0].indexOf('|'));
+             /*
             if(ciudad1[0].indexOf('|') != -1) {
                     ciudad1[0] = ciudad1[0].substring(ciudad1[0].indexOf('|')+1).toString();
                     lista[i] =  ciudad1[0].substring(0,ciudad1[0].indexOf('|'));
             } else {
                     lista[i] = ciudad1[0];
-                    //region[i]+" - "+
             }
+              */
+            System.out.println(lista[i]);
         }
         //lista[15] = ciudad1[0].substring(ciudad1[0].lastIndexOf('|')+1);
-        //System.out.println(ciudad1[0]);
+        
 
 
         return lista;
@@ -169,14 +182,14 @@ public class Parser extends URLConnectionReader {
      *  @author Alberto Lagos T.
      */
     public Ciudad [] generarCiudades() {
-        Ciudad[] lista = new Ciudad[17];
+        Ciudad[] lista = new Ciudad[16];
         String[][] todasTemperaturas = getTemperatura();
         String region[] = {"I","II", "III", "IV", "V","RM", "VI", "VII", "VIII", "IX", "XIV", "X", "XI", "XII", "V", "V", "",""};
         String[] c = getCiudad();
         for(int i =1;i<lista.length;i++) {
             c[i] = region[i-1]+" - "+c[i];
         }
-        for(int i =1;i<lista.length-1;i++) {
+        for(int i =1;i<lista.length;i++) {
             Double[] tempMax = new Double[5], tempMin = new Double[5];
             String[] tmpTemp = todasTemperaturas[i];
             if(!Character.isDigit(tmpTemp[0].charAt(0))) {
