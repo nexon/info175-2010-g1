@@ -4,15 +4,10 @@ import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.LinkedList;
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+
+
 
 /**
  * Clase Principal que implementa el widget (JPanel).
@@ -29,23 +24,14 @@ public class Pronosticator extends javax.swing.JPanel {
     public Pronosticator() {
         super();
         initComponents();
+        cInternet.setVisible(false);       //Icono de NO CONEXION, es visible solo en ese caso.
         ejecutar();
     }
     public void ejecutar() {
-        /* Verificamos las preferencias Guardadas */
-        Properties properties = new Properties();
-        try {
-            properties.load(new FileInputStream("pronosticator.properties"));
-        } catch (IOException e) {
-            try {
-                properties.store(new FileOutputStream("pronosticator.properties"), null);
-            } catch (IOException ex) {
-                Logger.getLogger(Pronosticator.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-         }
+        /* Creamos una instancia de Configuración para obtener/guardar el tiempo anterior */
+        conf = new Configuracion();
         datos = new Parser("http://www.meteochile.cl/js/pronostico_general.js");
-        if(datos.obtenerEstado()) {
+        if(datos.obtenerEstado()) {                                             // Verificamos si hay conexion de internet o si es posible conectarse a meteochile.
             listaDeCiudades.addItem("Seleccione Ciudad");
             Ciudad c[] = datos.generarCiudades();
             ciudades = new LinkedList();
@@ -54,13 +40,20 @@ public class Pronosticator extends javax.swing.JPanel {
                 listaDeCiudades.addItem(c[i].obtenerNombre());
             }
         } else {
-            JOptionPane.showMessageDialog(null, "no hay conexión, pero te mostraré los pronosticos anteriores :D");
+            /* Aqui entramos cuando no hay conexion o no pudimos obtener los datos del tiempo. */
+            cInternet.setVisible(true);
             listaDeCiudades.addItem("Seleccione Ciudad");
             
+            String fichero = conf.obtenerFicheroDeCiudades();
+            ciudades = conf.obtenerListaDeCiudades(fichero);
+             for(int i = 1;i<ciudades.size()-1;i++) {
+                listaDeCiudades.addItem(ciudades.get(i).obtenerNombre());
+            }
         }
-        System.out.println(properties.getProperty("ciudad"));
-        if(!properties.isEmpty()) {
-            listaDeCiudades.setSelectedIndex(Integer.parseInt(properties.getProperty("ciudad")));
+        if(!conf.isEmpty()) {
+            if(conf.obtenerUltimaSeleccion() != null) {
+                 listaDeCiudades.setSelectedIndex(Integer.parseInt(conf.obtenerUltimaSeleccion()));
+            }
         }
     }
     /** This method is called from within the constructor to
@@ -93,6 +86,7 @@ public class Pronosticator extends javax.swing.JPanel {
         fechaD4 = new javax.swing.JLabel();
         fechaD1 = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
+        cInternet = new javax.swing.JLabel();
 
         setLocation(new java.awt.Point(500, 300));
         setMaximumSize(new java.awt.Dimension(500, 300));
@@ -172,7 +166,7 @@ public class Pronosticator extends javax.swing.JPanel {
         tempMaxD1.setText(resourceMap.getString("tempMaxD1.text")); // NOI18N
         tempMaxD1.setName("tempMaxD1"); // NOI18N
         add(tempMaxD1);
-        tempMaxD1.setBounds(10, 60, 110, 70);
+        tempMaxD1.setBounds(10, 60, 220, 70);
 
         iconoD1.setText(resourceMap.getString("iconoD1.text")); // NOI18N
         iconoD1.setName("iconoD1"); // NOI18N
@@ -217,27 +211,36 @@ public class Pronosticator extends javax.swing.JPanel {
         jSeparator8.setName("jSeparator8"); // NOI18N
         add(jSeparator8);
         jSeparator8.setBounds(0, 150, 480, 12);
+
+        cInternet.setIcon(resourceMap.getIcon("cInternet.icon")); // NOI18N
+        cInternet.setText(resourceMap.getString("cInternet.text")); // NOI18N
+        cInternet.setName("cInternet"); // NOI18N
+        add(cInternet);
+        cInternet.setBounds(430, 250, 48, 48);
     }// </editor-fold>//GEN-END:initComponents
 
     private void listaDeCiudadesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaDeCiudadesItemStateChanged
         /* Creamos una instancia de properties para guardar la ciudad seleccionada (o en su defecto, el index) */
-        Properties properties = new Properties();
+        //Properties properties = new Properties();
         
         if(listaDeCiudades.getSelectedIndex() != 0 ){
-            properties.setProperty("ciudad", ""+(listaDeCiudades.getSelectedIndex()));
-            //properties.put("tiempo", ciudades);
-            properties.setProperty("tiempo", ciudades+"");
+            conf.guardarUltimaSeleccion(""+(listaDeCiudades.getSelectedIndex()));     // Guardamos la ultima seleccion.
+            String fichero = conf.obtenerFicheroDeCiudades();                         // Obtenemos el nombre del fichero donde guardamos la lista enlazada de ciudades.
+            conf.guardarListaDeCiudades(ciudades, fichero);                           // Guardamos la lista de ciudades actuales en el fichero de nombre fichero.
             
-            Ciudad tmp = ciudades.get(listaDeCiudades.getSelectedIndex()-1);
-            /* Obteniendo temperaturas */
+            Ciudad tmp = ciudades.get(listaDeCiudades.getSelectedIndex()-1);          // le entregamos el index seleccionado en el combo box a la lista de ciudades.
 
-            tempMaxD1.setText(""+tmp.obtenerPronostico().obtenerTemperaturaMax()[0]+"º");
+            /* Obteniendo temperaturas */
+            
+            if(tmp.obtenerPronostico().obtenerTemperaturaMin()[0] != null) tempMaxD1.setText(tmp.obtenerPronostico().obtenerTemperaturaMin()[0]+"º"+"/"+tmp.obtenerPronostico().obtenerTemperaturaMax()[0]+"º");
+            else tempMaxD1.setText(""+tmp.obtenerPronostico().obtenerTemperaturaMax()[0]+"º");
             tempMaxD2.setText(""+tmp.obtenerPronostico().obtenerTemperaturaMin()[1]+"º/"+tmp.obtenerPronostico().obtenerTemperaturaMax()[1]+"º");
             tempMaxD3.setText(""+tmp.obtenerPronostico().obtenerTemperaturaMin()[2]+"º/"+tmp.obtenerPronostico().obtenerTemperaturaMax()[2]+"º");
             tempMaxD4.setText(""+tmp.obtenerPronostico().obtenerTemperaturaMin()[3]+"º/"+tmp.obtenerPronostico().obtenerTemperaturaMax()[3]+"º");
 
             /* Obteniendo fechas */
 
+             System.out.println(tmp.obtenerPronostico().obtenerFecha()[0]);
             fechaD1.setText(tmp.obtenerPronostico().obtenerFecha()[0]);
             fechaD2.setText(tmp.obtenerPronostico().obtenerFecha()[1]);
             fechaD3.setText(tmp.obtenerPronostico().obtenerFecha()[2]);
@@ -260,13 +263,8 @@ public class Pronosticator extends javax.swing.JPanel {
             iconoD3.setToolTipText(tmp.obtenerPronostico().obtenerPronostico()[2]);
             iconoD4.setToolTipText(tmp.obtenerPronostico().obtenerPronostico()[3]);
 
-            /* Escribimos en las propiedades */
-            
-            try {
-                properties.store(new FileOutputStream("pronosticator.properties"), null);
-            } catch (IOException ex) {
-                System.out.println("EERRORR");
-            }
+            /* Guardamos las Propiedades. */
+            conf.guardarTodo();
             
 
          }
@@ -278,6 +276,7 @@ public class Pronosticator extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cInternet;
     private javax.swing.JLabel fechaD1;
     private javax.swing.JLabel fechaD2;
     private javax.swing.JLabel fechaD3;
@@ -301,6 +300,11 @@ public class Pronosticator extends javax.swing.JPanel {
     private javax.swing.JLabel tempMaxD4;
     // End of variables declaration//GEN-END:variables
     @Override
+
+    /**
+     * Metodo que simplemente pinta el fondo, nada mas.
+     * 
+     */
     protected void paintComponent( Graphics g ) {
         super.paintComponent( g );
         int panelHeight = getHeight();

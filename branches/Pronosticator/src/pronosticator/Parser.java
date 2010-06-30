@@ -1,7 +1,7 @@
 package pronosticator;
 
 /**
- * Clase que permite obtener los datos de meteochile y.... chan chan chanchaaaan.
+ * Clase que permite obtener los datos de meteochile y parsea los datos (ciudades, pronostico del tiempo, etc).
  * @author Alberto Lagos T.
  */
 public class Parser extends URLConnectionReader {
@@ -28,7 +28,7 @@ public class Parser extends URLConnectionReader {
         String[] tmpC = this.getCiudad();
         String fechasCiudades[][] = new String[16][5];
 
-         for(int i=1; i<fechasCiudades.length-1;i++) {
+         for(int i=1; i<fechasCiudades.length;i++) {
             int inicio = dato.indexOf("fechas['"+tmpC[i]+"']='");
             int finall = dato.indexOf("temperaturas['"+tmpC[i+1]+"']='");
 
@@ -38,7 +38,7 @@ public class Parser extends URLConnectionReader {
                  fechasCiudades[i][j] = fechas.substring(0, fechas.indexOf('|'));
                 fechas = fechas.substring(fechas.indexOf('|')+1);
                 fechasCiudades[i][j] = changeChar(fechasCiudades[i][j]);
-             }       
+             }
         }
         return fechasCiudades;
     }
@@ -51,27 +51,25 @@ public class Parser extends URLConnectionReader {
      */
 
     public String[] getCiudad() {
-        String region[] = {"XV","I","II", "III", "IV", "V","RM", "VI", "VII", "VIII", "IX", "XIV", "X", "XI", "XII", "XII"};
         int inicio = dato.indexOf("var ciudades='");
         String ciudades1 = dato.substring(inicio,dato.length());
         String ciudad[] = ciudades1.split("var ciudades='");
         String ciudad1[] = ciudad[1].split("';");
-        //System.out.println(ciudad1[0]);
         String ciudadesSolas[] = new String[17];
         String lista[] = new String[17];
-        //System.out.println(ciudadesSolas.length);
         lista[1] = "Arica";
          for(int i=2;i<ciudadesSolas.length;i++) {
             if(ciudad1[0].indexOf('|') != -1) {
                     ciudad1[0] = ciudad1[0].substring(ciudad1[0].indexOf('|')+1).toString();
                     lista[i] =  ciudad1[0].substring(0,ciudad1[0].indexOf('|'));
-//                    System.out.println(region[i]+" - "+ciudad1[0].substring(0,ciudad1[0].indexOf('|')));
             } else {
                     lista[i] = ciudad1[0];
                     //region[i]+" - "+
             }
         }
-        lista[15] = ciudad1[0].substring(ciudad1[0].lastIndexOf('|')+1);
+        //lista[15] = ciudad1[0].substring(ciudad1[0].lastIndexOf('|')+1);
+        //System.out.println(ciudad1[0]);
+
 
         return lista;
 
@@ -97,7 +95,7 @@ public class Parser extends URLConnectionReader {
             }
             iconosCiudades[i][4] = iconos;
         }
-        
+
         return iconosCiudades;
     }
 
@@ -115,9 +113,18 @@ public class Parser extends URLConnectionReader {
             int finall = dato.indexOf("pronosticos['"+tmpC[i]+"']='");
             String temperaturas = dato.substring(inicio, finall-2);
             temperaturas = temperaturas.substring(temperaturas.indexOf('=')+2);
+            //if(temperaturas.charAt(0) == '-') {
             if(!Character.isDigit(temperaturas.charAt(0))) {
-                 temperaturaCiudades[i][0] = temperaturas.substring(1,temperaturas.indexOf('|'));
-                 temperaturas = temperaturas.substring(temperaturas.indexOf('|')+1);
+                 if(temperaturas.charAt(0) == '-') {
+                    temperaturaCiudades[i][0] = temperaturas.substring(0,temperaturas.indexOf('|'));
+                    temperaturas = temperaturas.substring(temperaturas.indexOf('|')+1);
+                 } else {
+                    temperaturaCiudades[i][0] = temperaturas.substring(1,temperaturas.indexOf('|'));
+                    temperaturas = temperaturas.substring(temperaturas.indexOf('|')+1);
+                 }
+
+                             System.out.println(temperaturas);
+
             } else {
                 temperaturaCiudades[i][0] = temperaturas.substring(0,temperaturas.indexOf('|'));
                 temperaturas = temperaturas.substring(temperaturas.indexOf('|')+1);
@@ -163,19 +170,25 @@ public class Parser extends URLConnectionReader {
      */
     public Ciudad [] generarCiudades() {
         Ciudad[] lista = new Ciudad[17];
-        String region[] = {"XV","I","II", "III", "IV", "V","RM", "VI", "VII", "VIII", "IX", "XIV", "X", "XI", "XII", "XII", ""};
+        String[][] todasTemperaturas = getTemperatura();
+        String region[] = {"I","II", "III", "IV", "V","RM", "VI", "VII", "VIII", "IX", "XIV", "X", "XI", "XII", "V", "V", "",""};
         String[] c = getCiudad();
         for(int i =1;i<lista.length;i++) {
             c[i] = region[i-1]+" - "+c[i];
         }
-        for(int i =1, f = 0;i<lista.length-1;i++) {
-            String[] tmpTemp = getTemperatura()[i];
+        for(int i =1;i<lista.length-1;i++) {
             Double[] tempMax = new Double[5], tempMin = new Double[5];
+            String[] tmpTemp = todasTemperaturas[i];
             if(!Character.isDigit(tmpTemp[0].charAt(0))) {
-                tempMax[0] = Double.parseDouble(tmpTemp[0]);
-                tempMin[0] = 0.0;
+                if(tmpTemp[0].charAt(0) == '-') {
+                    tempMax[0] = Double.parseDouble(tmpTemp[0].substring(tmpTemp[0].indexOf('/')+1).replace("'", ""));
+                    tempMin[0] = Double.parseDouble(tmpTemp[0].substring(0,tmpTemp[0].indexOf('/')));
+                } else {
+                    tempMax[0] = Double.parseDouble(tmpTemp[0]);
+                }
             } else {
                 tempMax[0] = Double.parseDouble(tmpTemp[0].substring(tmpTemp[0].indexOf('/')+1).replace("'", ""));
+                tempMin[0] = Double.parseDouble(tmpTemp[0].substring(0,tmpTemp[0].indexOf('/')));
             }
             for(int j=1;j<tmpTemp.length;j++) {
                 tempMin[j] = Double.parseDouble(tmpTemp[j].substring(0,tmpTemp[j].indexOf('/')));
