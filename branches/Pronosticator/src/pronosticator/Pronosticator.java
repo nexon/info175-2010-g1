@@ -35,7 +35,7 @@ public class Pronosticator extends javax.swing.JPanel {
             listaDeCiudades.addItem("Seleccione Ciudad");
             Ciudad c[] = datos.generarCiudades();
             ciudades = new LinkedList();
-            for(int i = 1;i<c.length-1;i++) {
+            for(int i = 1;i<c.length;i++) {
                 ciudades.addLast(c[i]);
                 listaDeCiudades.addItem(c[i].obtenerNombre());
             }
@@ -46,7 +46,7 @@ public class Pronosticator extends javax.swing.JPanel {
             
             String fichero = conf.obtenerFicheroDeCiudades();
             ciudades = conf.obtenerListaDeCiudades(fichero);
-             for(int i = 1;i<ciudades.size()-1;i++) {
+             for(int i = 1;i<ciudades.size();i++) {
                 listaDeCiudades.addItem(ciudades.get(i).obtenerNombre());
             }
         }
@@ -224,6 +224,7 @@ public class Pronosticator extends javax.swing.JPanel {
         //Properties properties = new Properties();
         
         if(listaDeCiudades.getSelectedIndex() != 0 ){
+            System.out.println(listaDeCiudades.getSelectedIndex());
             conf.guardarUltimaSeleccion(""+(listaDeCiudades.getSelectedIndex()));     // Guardamos la ultima seleccion.
             String fichero = conf.obtenerFicheroDeCiudades();                         // Obtenemos el nombre del fichero donde guardamos la lista enlazada de ciudades.
             conf.guardarListaDeCiudades(ciudades, fichero);                           // Guardamos la lista de ciudades actuales en el fichero de nombre fichero.
