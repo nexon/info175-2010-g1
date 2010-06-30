@@ -39,7 +39,7 @@ public class ParserTest extends TestCase {
         String ciudad []={null,"Arica","Iquique","Antofagasta","Copiap&oacute;","La Serena/Coquimbo"
             ,"Vi&ntilde;a del Mar/Valpara&iacute;so"
             ,"Santiago Sector Centro","Rancagua","Talca","Concepci&oacute;n"
-            ,"Temuco","Valdivia","Puerto Montt","Coyhaique","Punta Arenas","Pen&iacute;nsula Ant&aacute;rtica"};
+            ,"Temuco","Valdivia","Puerto Montt","Coyhaique","Punta Arenas","Isla de Pascua"};
 
         datos = new Parser("http://www.meteochile.cl/js/pronostico_general.js");
         String c[]= datos.getCiudad();
